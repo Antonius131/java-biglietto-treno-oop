@@ -76,7 +76,7 @@ public class Biglietto {
 	
 	// calculate price & discount methods
 	
-	private double calculateDiscount(int km, BigDecimal PRICE_PER_KM, BigDecimal OVER_65_DISCOUNT, BigDecimal UNDER_18_DISCOUNT) {
+	private double calculateDiscount(int km, BigDecimal PRICE_PER_KM, BigDecimal OVER_65_DISCOUNT, BigDecimal UNDER_18_DISCOUNT, boolean flessible) {
 		
 		double price = km * PRICE_PER_KM.doubleValue();
 		double totalPrice;
@@ -96,12 +96,18 @@ public class Biglietto {
 			totalPrice = km * PRICE_PER_KM.doubleValue();
 		}
 				 		
-		return totalPrice;
+		if (flessible == true) {
+			
+			return totalPrice + (totalPrice * 0.10);
+		} else {
+			
+			return totalPrice;
+		}
 	}
 	
 	public double calculatePrice() {
 		
-		return calculateDiscount(km, PRICE_PER_KM, OVER_65_DISCOUNT, UNDER_18_DISCOUNT);		
+		return calculateDiscount(km, PRICE_PER_KM, OVER_65_DISCOUNT, UNDER_18_DISCOUNT, flessible);		
 	}
 	
 	
