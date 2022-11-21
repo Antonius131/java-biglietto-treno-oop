@@ -1,5 +1,6 @@
 package org.buyticket.italy;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Biglietteria {
@@ -13,10 +14,14 @@ public class Biglietteria {
 		int km = sc.nextInt();
 		System.out.print("inserisci l'età del passeggero: ");
 		int age = sc.nextInt();
+		System.out.print("Vuoi un biglietto flessibile? ");
+		boolean flessible = sc.nextBoolean();
+		
+		sc.close();
 		
 		try {
 			
-			Biglietto ticket = new Biglietto(km, age);
+			Biglietto ticket = new Biglietto(km, age, LocalDate.now(), flessible);
 			
 			System.out.println(ticket);
 			System.out.println("Prezzo biglietto: " + ticket.calculatePrice() + "€");

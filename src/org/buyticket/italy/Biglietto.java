@@ -1,19 +1,27 @@
 package org.buyticket.italy;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public class Biglietto {
 	
 	private static final BigDecimal PRICE_PER_KM = new BigDecimal(0.21);
 	private static final BigDecimal OVER_65_DISCOUNT = new BigDecimal(0.40);
     private static final BigDecimal UNDER_18_DISCOUNT = new BigDecimal(0.20);
+    private static final int NORMAL_DUR = 30;
+    private static final int FLESSIBLE_DUR = 90;
+	private LocalDate data;
+    private boolean flessible;
 	private int km;
 	private int age;
 	
-	public Biglietto(int km, int age) throws Exception {
+	public Biglietto(int km, int age, LocalDate data, boolean flessible) throws Exception {
 		
 		setKm(km);
 		setAge(age);
+		this.data = LocalDate.now();
+		this.flessible = flessible;
+		
 	}
 
 	public int getKm() {
@@ -65,12 +73,14 @@ public class Biglietto {
 	}
 	
 	
+	
 	// calculate price & discount methods
 	
 	private double calculateDiscount(int km, BigDecimal PRICE_PER_KM, BigDecimal OVER_65_DISCOUNT, BigDecimal UNDER_18_DISCOUNT) {
 		
 		double price = km * PRICE_PER_KM.doubleValue();
 		double totalPrice;
+		
 		
 		if (age < 12) {
 			
@@ -96,11 +106,33 @@ public class Biglietto {
 	
 	
 	
+	// calculate expiring methods
+	
+	public LocalDate calcolaDataScadenza(LocalDate data, boolean flessible,int NORMAL_DUR, int FLESSIBLE_DUR) {
+		
+		
+		if (flessible = true) {
+		 
+			return data.plusDays(FLESSIBLE_DUR);
+		} else {
+			
+			return data.plusDays(NORMAL_DUR);
+		}
+		
+	}
+	
+	
+	
+	
 	@Override
 	public String toString() {
 		
 		// TODO Auto-generated method stub
 		return  "Età passeggero: " + age
-				+ "\nKm percorsi: " + km; 
+				+ "\nKm percorsi: " + km
+				+ "\nKm Data: " + data
+				+ "\nKm flessibile: " + flessible
+				+ "\nKm scandeza: " + calcolaDataScadenza(data, flessible, NORMAL_DUR, FLESSIBLE_DUR);
+		
 	}
 }
