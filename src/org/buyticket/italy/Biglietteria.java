@@ -1,5 +1,6 @@
 package org.buyticket.italy;
 
+import java.io.FileWriter;
 import java.time.LocalDate;
 import java.util.Scanner;
 
@@ -23,11 +24,15 @@ public class Biglietteria {
 			
 			Biglietto ticket = new Biglietto(km, age, LocalDate.now(), flessible);
 			
+			FileWriter myWriter = new FileWriter("biglietto.txt"); 
+			myWriter.write(ticket.toString());
+			myWriter.close();
+			
 			System.out.println(ticket);
 			System.out.println("Prezzo biglietto: " + ticket.calculatePrice() + "€");
 		} catch (Exception e) {
 			
 			System.out.println(e.getMessage());
-		}
+		} 
 	}
 }

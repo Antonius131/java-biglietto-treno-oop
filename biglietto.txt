@@ -1,0 +1,5 @@
+Età passeggero: 20
+Km percorsi: 10
+Km Data: 2022-11-21
+Km flessibile: true
+Scadenza Biglietto: 2023-02-19
