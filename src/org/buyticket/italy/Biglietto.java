@@ -95,7 +95,7 @@ public class Biglietto {
 			
 			totalPrice = km * PRICE_PER_KM.doubleValue();
 		}
-		 		
+				 		
 		return totalPrice;
 	}
 	
@@ -110,15 +110,13 @@ public class Biglietto {
 	
 	public LocalDate calcolaDataScadenza(LocalDate data, boolean flessible,int NORMAL_DUR, int FLESSIBLE_DUR) {
 		
-		
-		if (flessible = true) {
+		if (flessible == true) {
 		 
 			return data.plusDays(FLESSIBLE_DUR);
 		} else {
 			
 			return data.plusDays(NORMAL_DUR);
 		}
-		
 	}
 	
 	
@@ -132,7 +130,7 @@ public class Biglietto {
 				+ "\nKm percorsi: " + km
 				+ "\nKm Data: " + data
 				+ "\nKm flessibile: " + flessible
-				+ "\nKm scandeza: " + calcolaDataScadenza(data, flessible, NORMAL_DUR, FLESSIBLE_DUR);
+				+ "\nScadenza Biglietto: " + calcolaDataScadenza(data, flessible, NORMAL_DUR, FLESSIBLE_DUR);
 		
 	}
 }
